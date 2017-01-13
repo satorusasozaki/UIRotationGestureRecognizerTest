@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var redView: UIView!
     var lastRotation: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add rotation gesture (to rotate)
@@ -24,14 +25,14 @@ class ViewController: UIViewController {
         
         var originalRotation = CGFloat()
         if sender.state == .began {
-            
-            // the last rotation is the relative rotation value when rotation stopped last time,
-            // which indicates the current rotation
-            originalRotation = lastRotation
-            
+            print("sender.rotation: \(sender.rotation)")
             // sender.rotation renews everytime the rotation starts
             // delta value but not absolute value
             sender.rotation = lastRotation
+            
+            // the last rotation is the relative rotation value when rotation stopped last time,
+            // which indicates the current rotation
+            originalRotation = sender.rotation
             
         } else if sender.state == .changed {
             
@@ -47,3 +48,4 @@ class ViewController: UIViewController {
     }
 }
 
+    
